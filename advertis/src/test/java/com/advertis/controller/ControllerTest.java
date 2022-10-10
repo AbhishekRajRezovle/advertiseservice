@@ -81,5 +81,12 @@ public class ControllerTest {
                 .contentType(MediaType.APPLICATION_JSON).content(json).accept(MediaType.APPLICATION_JSON);
         mockMvc.perform(mvCRequest).andExpect(status().isOk());
     }
+    
+    @Test
+    void getAdvertising() throws Exception{
+        RequestBuilder mvCRequest = MockMvcRequestBuilders.get(AppConstantTest.CONTROLLER_BASE_URL + "/getAdvertis?latitude=77.9&longitude=88.9")
+                .accept(MediaType.APPLICATION_JSON);
+        mockMvc.perform(mvCRequest).andExpect(status().isOk());
+    }
 
 }
