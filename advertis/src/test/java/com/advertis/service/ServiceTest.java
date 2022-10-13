@@ -42,7 +42,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class ServiceTest {
 
 	@InjectMocks
-	AdvertisService advertisService;
+	AdvertisServiceImpl advertisService;
 	@Mock
 	AdvertisRepository advertisRepository;
 	@Mock

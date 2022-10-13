@@ -21,7 +21,7 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import com.advertis.AppConstantTest;
 import com.advertis.entity.AdvertisEntity;
-import com.advertis.service.AdvertisService;
+import com.advertis.service.AdvertisServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @ExtendWith(MockitoExtension.class)
@@ -32,7 +32,7 @@ public class ControllerTest {
     @InjectMocks
     AdvertisController advertisController;
     @Mock
-    AdvertisService advertisingService;
+    AdvertisServiceImpl advertisingService;
     ObjectMapper mapper = new ObjectMapper();
 
     @BeforeEach

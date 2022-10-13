@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.advertis.dto.ResponseDto;
 import com.advertis.entity.AdvertisEntity;
 import com.advertis.service.AdvertisService;
+import com.advertis.service.AdvertisServiceImpl;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,25 +28,25 @@ public class AdvertisController {
 	@Autowired
 	AdvertisService advertisService;
 
-	@PostMapping("/createAdvertis")
+	@PostMapping("/advertis")
 	public ResponseDto addAdvertis(@Valid @RequestBody AdvertisEntity request) {
 		log.info("creating advertising for request {}", request);
 		return advertisService.addAdvertis(request);
 	}
 
-	@DeleteMapping("deleteAdvertis" + "/{advertisingId}")
-	public ResponseDto deleteAdvertising(@PathVariable final Long advertisingId) {
-		log.info("deleting advertising for request {}", advertisingId);
-		return advertisService.deleteAdvertis(advertisingId);
+	@DeleteMapping("advertis" + "/{advertisId}")
+	public ResponseDto deleteAdvertising(@PathVariable final Long advertisId) {
+		log.info("deleting advertising for request {}", advertisId);
+		return advertisService.deleteAdvertis(advertisId);
 	}
 	
-	@GetMapping("/getAdvertis")
+	@GetMapping("/advertis")
     public ResponseDto getAdvertis(@RequestParam final Double latitude,@RequestParam final Double longitude){
         log.info("getting advertising for request lat {} long {}",latitude,longitude);
         return advertisService.getAdvertisInsideGeo(latitude,longitude);
     }
 
-	@PutMapping("updateAdvertis")
+	@PutMapping("/advertis")
 	public ResponseDto updateAdvertis(@Valid @RequestBody AdvertisEntity request) {
 		log.info("updating advertising for request {}", request);
 		return advertisService.updateAdvertis(request);
