@@ -1,16 +1,15 @@
 package com.advertis.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
@@ -22,11 +21,11 @@ import lombok.Data;
 public abstract class AuditEntity implements Serializable {
 
 	@Column(name = "created_at", updatable = false)
-	@CreationTimestamp
-	private Date createdAt;
+	@JsonFormat(pattern="yyyy-MM-dd")
+	private LocalDateTime createdAt;
 
-	@Column(name = "updated_at")
-	@UpdateTimestamp
-	private Date updatedAt;
+	@Column(name = "updated_at")  
+	@JsonFormat(pattern="yyyy-MM-dd")
+	private LocalDateTime updatedAt;
 
 }

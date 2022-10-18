@@ -2,6 +2,7 @@ package com.advertis.controller;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -50,10 +51,10 @@ public class ControllerTest {
         advertisEntity.setLongitude(2.0);
         advertisEntity.setLatitude(1.0);
         advertisEntity.setAdvertisName("Test");
-        advertisEntity.setUpdatedAt(new Date());
-        advertisEntity.setCreatedAt(new Date());
+        advertisEntity.setUpdatedAt(LocalDateTime.now());
+        advertisEntity.setCreatedAt(LocalDateTime.now());
         String json = mapper.writeValueAsString(advertisEntity);
-        RequestBuilder mvCRequest = MockMvcRequestBuilders.post(AppConstantTest.CONTROLLER_BASE_URL + "/createAdvertis")
+        RequestBuilder mvCRequest = MockMvcRequestBuilders.post(AppConstantTest.CONTROLLER_BASE_URL + "/advertis")
                 .contentType(MediaType.APPLICATION_JSON).content(json).accept(MediaType.APPLICATION_JSON);
         mockMvc.perform(mvCRequest).andExpect(status().isOk());
     }
@@ -61,7 +62,7 @@ public class ControllerTest {
 
     @Test
     void deleteAdvertising() throws Exception{
-        RequestBuilder mvCRequest = MockMvcRequestBuilders.delete(AppConstantTest.CONTROLLER_BASE_URL + "/deleteAdvertis/1")
+        RequestBuilder mvCRequest = MockMvcRequestBuilders.delete(AppConstantTest.CONTROLLER_BASE_URL + "/advertis/1")
                 .accept(MediaType.APPLICATION_JSON);
         mockMvc.perform(mvCRequest).andExpect(status().isOk());
     }
@@ -74,17 +75,16 @@ public class ControllerTest {
     	advertisEntity.setLongitude(12.0);
     	advertisEntity.setLatitude(11.0);
     	advertisEntity.setAdvertisName("Test");
-    	advertisEntity.setUpdatedAt(new Date());
-    	advertisEntity.setCreatedAt(new Date());
+    	advertisEntity.setUpdatedAt(LocalDateTime.now());
         String json = mapper.writeValueAsString(advertisEntity);
-        RequestBuilder mvCRequest = MockMvcRequestBuilders.put(AppConstantTest.CONTROLLER_BASE_URL + "/updateAdvertis")
+        RequestBuilder mvCRequest = MockMvcRequestBuilders.put(AppConstantTest.CONTROLLER_BASE_URL + "/advertis")
                 .contentType(MediaType.APPLICATION_JSON).content(json).accept(MediaType.APPLICATION_JSON);
         mockMvc.perform(mvCRequest).andExpect(status().isOk());
     }
     
     @Test
     void getAdvertising() throws Exception{
-        RequestBuilder mvCRequest = MockMvcRequestBuilders.get(AppConstantTest.CONTROLLER_BASE_URL + "/getAdvertis?latitude=77.9&longitude=88.9")
+        RequestBuilder mvCRequest = MockMvcRequestBuilders.get(AppConstantTest.CONTROLLER_BASE_URL + "/advertis?latitude=77.9&longitude=88.9")
                 .accept(MediaType.APPLICATION_JSON);
         mockMvc.perform(mvCRequest).andExpect(status().isOk());
     }

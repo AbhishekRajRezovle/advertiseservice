@@ -3,6 +3,7 @@ package com.advertis.service;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.when;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -63,8 +64,8 @@ public class ServiceTest {
 		advertisEntity.setLongitude(12.0);
 		advertisEntity.setLatitude(11.0);
 		advertisEntity.setAdvertisName("Test");
-		advertisEntity.setUpdatedAt(new Date());
-		advertisEntity.setCreatedAt(new Date());
+		advertisEntity.setUpdatedAt(LocalDateTime.now());
+		advertisEntity.setCreatedAt(LocalDateTime.now());
 	}
 
 	@Test

@@ -1,5 +1,6 @@
 package com.advertis.service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -64,6 +65,8 @@ public class AdvertisServiceImpl implements AdvertisService{
 			return new ErrorResponseDto(ApplicationConstants.HTTP_RESPONSE_ERROR_CODE_HREF,
 					"received unsuccessful status code " + isValidUrl + " from " + advertisEntity.getHref());
 		}
+		advertisEntity.setCreatedAt(LocalDateTime.now());
+		advertisEntity.setUpdatedAt(LocalDateTime.now());
 		AdvertisEntity responseDto = advertisRepository.save(advertisEntity);
 		List<Geo> geo = (List<Geo>) getAdvertis(advertisEntity.getLatitude(), advertisEntity.getLongitude()).getData();
 		Set<AdvertisGeoMapping> advertisGeoMappingSet = new HashSet<>();

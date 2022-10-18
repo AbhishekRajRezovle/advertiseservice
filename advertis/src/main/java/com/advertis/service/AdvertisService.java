@@ -5,7 +5,6 @@ import java.util.List;
 import com.advertis.dto.Geo;
 import com.advertis.dto.ResponseDto;
 import com.advertis.entity.AdvertisEntity;
-
 public interface AdvertisService {
 	
 	public ResponseDto addAdvertis(AdvertisEntity advertisEntity);
